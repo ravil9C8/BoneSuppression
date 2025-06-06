@@ -1,0 +1,21 @@
+[project]
+name = "bone-supression"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "matplotlib>=3.10.1",
+    "opencv-python>=4.11.0.86",
+    "scikit-learn>=1.6.1",
+    "tensorflow>=2.19.0",
+    "torch>=2.6.0",
+    "torchmetrics>=1.7.0",
+    "torchvision>=0.21.0",
+    "tqdm>=4.67.1",
+    "ultralytics>=8.2.99",
+]
+
+[tool.uv.sources]
+ultralytics = { git = "https://github.com/sahilm75/ultralytics.git" }

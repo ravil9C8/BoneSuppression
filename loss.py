@@ -59,7 +59,8 @@ class LossMixMulti084(nn.Module):
     def __init__(self):
         super(LossMixMulti084, self).__init__()
         self.alpha = 0.16
-        self.beta = 0.84
+        self.beta = 0.54
+        self.gamma = 0.30
         self.ssim_fn = MultiScaleStructuralSimilarityIndexMeasure(data_range=1.0)
 
     def mae(self, y_true, y_pred):
@@ -73,7 +74,7 @@ class LossMixMulti084(nn.Module):
         ssim_loss = 1 - self.ssim_fn(y_pred, y_true)
 
         # Weighted Combination
-        loss = self.alpha * mae_loss + self.beta * ssim_loss
+        loss = self.alpha * mae_loss + self.beta * ssim_loss - gamma * PSNR(y_true, y_pred)
         return loss
     
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

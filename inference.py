@@ -26,7 +26,7 @@ import gc
 
 from models import ResNetBSHighResDilated
 from utils import process_image_bs
-MODEL_ROOT = "/mnt/nvme_disk2/User_data/rp926k/Bone_Supression/weights_1024_pyscript_not_norm"
+MODEL_ROOT = "/home/ravil/Bone_Supression/weights_1024_pyscript_not_norm"
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
@@ -91,7 +91,7 @@ def get_bone_supressed_resnet(input_image: torch.Tensor, is_inverted: bool) -> n
     return 1 - bs_image
 
 if __name__ == "__main__":
-    input_image_path = "/mhgp003-v1/kanpur/data_radiovision/validation_dataset/Validation_Dataset_2/PTCXR (1282).png"
+    input_image_path = "image_path.png"
     image_ = cv2.imread(input_image_path)
     image_ = cv2.resize(image_, (1024, 1024))
     print("Input Image Shape:", image_.shape)
